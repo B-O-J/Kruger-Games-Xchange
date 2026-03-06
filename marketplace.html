@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 
 <html lang="en">
 
@@ -122,4 +122,128 @@ handler.openIframe();
 </script>
 
 </body>
+</html> -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Marketplace | Kruger Xchange</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<h2>KRUGER XCHANGE</h2>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="marketplace.html">Marketplace</a></li>
+<li><a href="sell.html">Sell</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</nav>
+
+<section class="market-header">
+
+<h1>Marketplace</h1>
+
+<input type="text" id="search" placeholder="Search products..." onkeyup="searchProducts()">
+
+<select id="categoryFilter" onchange="filterCategory()">
+<option value="all">All Categories</option>
+<option value="gaming">Gaming</option>
+<option value="jersey">Jerseys</option>
+<option value="cars">Cars</option>
+<option value="giftcard">Gift Cards</option>
+<option value="crypto">Crypto</option>
+</select>
+
+</section>
+
+<section>
+
+<div id="productContainer" class="product-grid"></div>
+
+</section>
+
+<script>
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+function displayProducts(list){
+
+let container = document.getElementById("productContainer");
+
+container.innerHTML="";
+
+list.forEach(product =>{
+
+container.innerHTML += `
+
+<div class="product-card" data-category="${product.category}">
+
+<img src="${product.image}" alt="product">
+
+<h3>${product.name}</h3>
+
+<p>₦${product.price}</p>
+
+<a href="https://wa.me/2347038366820?text=Hello I want to order ${product.name}" class="btn">Order WhatsApp</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+displayProducts(products);
+
+
+
+function searchProducts(){
+
+let search = document.getElementById("search").value.toLowerCase();
+
+let filtered = products.filter(p => p.name.toLowerCase().includes(search));
+
+displayProducts(filtered);
+
+}
+
+
+
+function filterCategory(){
+
+let category = document.getElementById("categoryFilter").value;
+
+if(category === "all"){
+
+displayProducts(products);
+
+}else{
+
+let filtered = products.filter(p => p.category === category);
+
+displayProducts(filtered);
+
+}
+
+}
+
+</script>
+
+</body>
 </html>
+

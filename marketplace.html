@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Marketplace | Kruger Xchange</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<h2>KRUGER XCHANGE</h2>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="marketplace.html">Marketplace</a></li>
+<li><a href="sell.html">Sell</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</nav>
+
+<section class="products">
+
+<h1>Marketplace</h1>
+
+<div class="product-grid">
+
+<div class="product">
+
+<h3>PlayStation 5</h3>
+<p>Next-gen gaming console</p>
+
+<button onclick="orderItem('PlayStation 5')">Order WhatsApp</button> <button onclick="payNow(350000)">Buy Now</button>
+
+</div>
+
+<div class="product">
+
+<h3>Football Jersey</h3>
+<p>Club and national teams</p>
+
+<button onclick="orderItem('Football Jersey')">Order WhatsApp</button> <button onclick="payNow(25000)">Buy Now</button>
+
+</div>
+
+<div class="product">
+
+<h3>Gift Card Trading</h3>
+<p>Amazon • Apple • Steam</p>
+
+<button onclick="orderItem('Gift Card Trade')">Trade WhatsApp</button>
+
+</div>
+
+<div class="product">
+
+<h3>Crypto Trading</h3>
+<p>BTC • ETH • USDT</p>
+
+<button onclick="orderItem('Crypto Trade')">Trade WhatsApp</button>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+function orderItem(product){
+
+let message = "Hello, I want to order: " + product;
+
+let url = "https://wa.me/2347038366820?text=" + encodeURIComponent(message);
+
+window.open(url);
+
+}
+
+
+function payNow(amount){
+
+let handler = PaystackPop.setup({
+
+key: 'YOUR_PAYSTACK_PUBLIC_KEY',
+
+email: 'customer@email.com',
+
+amount: amount * 100,
+
+currency: "NGN",
+
+callback: function(response){
+
+alert("Payment successful! Ref: " + response.reference);
+
+},
+
+onClose: function(){
+
+alert("Transaction cancelled");
+
+}
+
+});
+
+handler.openIframe();
+
+}
+
+</script>
+
+</body>
+</html>

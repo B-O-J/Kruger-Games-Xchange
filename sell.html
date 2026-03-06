@@ -38,7 +38,7 @@
 
 <section class="sell-page">
 
-<form>
+<!--<form>
 
 <input type="text" placeholder="Full Name" required>
 
@@ -52,7 +52,51 @@
 
 <button type="submit">Submit Item</button>
 
+</form>-->
+
+<form onsubmit="submitItem(event)">
+
+<input type="text" id="name" placeholder="Full Name" required>
+
+<input type="text" id="category" placeholder="Item Category">
+
+<input type="text" id="item" placeholder="Item Name">
+
+<input type="number" id="price" placeholder="Price">
+
+<textarea id="description" placeholder="Item description"></textarea>
+
+<button type="submit">Submit Item</button>
+
 </form>
+
+<script>
+
+function submitItem(event){
+
+event.preventDefault();
+
+let name = document.getElementById("name").value;
+let category = document.getElementById("category").value;
+let item = document.getElementById("item").value;
+let price = document.getElementById("price").value;
+let description = document.getElementById("description").value;
+
+let message =
+"New Item Submission:%0A" +
+"Name: " + name + "%0A" +
+"Category: " + category + "%0A" +
+"Item: " + item + "%0A" +
+"Price: ₦" + price + "%0A" +
+"Description: " + description;
+
+let url = "https://wa.me/2347038366820?text=" + message;
+
+window.open(url);
+
+}
+
+</script>
 
 </section>
 

@@ -151,7 +151,7 @@ padding:40px;
 }
 
 .product{
-background:#1c1c1c;
+background:#1e293b;
 padding:20px;
 border-radius:10px;
 }
@@ -159,7 +159,8 @@ border-radius:10px;
 .product button{
 margin-top:10px;
 padding:10px;
-border-radius:10px;
+border:none;
+border-radius:6px;
 background:#f7d36b;
 cursor:pointer;
 }
